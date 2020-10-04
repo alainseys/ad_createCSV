@@ -38,9 +38,9 @@ namespace Cns_CreateCsv
             string PASSWORD = "abc12345%";
 
 
-            var records = new List<Foo>
+            var records = new List<ADUSER>
             {
-                new Foo { Firstname = FIRSTNAME, Lastname = LASTNAME, Password = PASSWORD},
+                new ADUSER { Firstname = FIRSTNAME, Lastname = LASTNAME, Password = PASSWORD},
                 //new Foo {Lastname = LASTNAME},
                 //new Foo {Password = PASSWORD}
             };
@@ -52,15 +52,15 @@ namespace Cns_CreateCsv
             }
         }
         //this is the binding
-        public class Foo 
+        public class ADUSER 
         {
             public string Firstname { get; set; }
             public string Lastname { get; set; }
             public string Password { get; set; }
         }
-        public class FooMap : ClassMap<Foo>
+        public class ADUSERMap : ClassMap<ADUSER>
         {
-            public FooMap()
+            public ADUSERMap()
             {
                 Map(m => m.Firstname).Index(0).Name("Firstname");
                 Map(m => m.Lastname).Index(1).Name("Lastname");
