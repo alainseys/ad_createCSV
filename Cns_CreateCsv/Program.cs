@@ -36,6 +36,7 @@ namespace Cns_CreateCsv
             Console.WriteLine("Enter Lastname:");
             string LASTNAME = Console.ReadLine();
             string PASSWORD = "abc12345%";
+            string DATE = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss");
 
 
             var records = new List<ADUSER>
@@ -45,7 +46,7 @@ namespace Cns_CreateCsv
                 //new Foo {Password = PASSWORD}
             };
 
-            using (var writer = new StreamWriter(CSV_PATH + @"\test.csv"))
+            using (var writer = new StreamWriter(CSV_PATH +@"\"+DATE+".csv"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) 
             {
                 csv.WriteRecords(records);
