@@ -47,9 +47,18 @@ namespace Cns_CreateCsv
             };
 
             using (var writer = new StreamWriter(CSV_PATH +@"\"+DATE+".csv"))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) 
+            try
             {
-                csv.WriteRecords(records);
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) 
+                {
+                    csv.WriteRecords(records);
+                }
+            }
+            catch(Exception ex){
+             _log.Error("Something went wrong while writting to CSv" + ex.Message);
+            }
+            finally{
+            writer.close();
             }
         }
         //this is the binding
