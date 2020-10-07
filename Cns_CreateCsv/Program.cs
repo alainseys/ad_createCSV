@@ -54,9 +54,15 @@ namespace Cns_CreateCsv
                     csv.WriteRecords(records);
                 }
             }
-            Catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+
+                
+
+            catch(Exception ex){
+             _log.Error("Something went wrong while writting to CSv" + ex.Message);
+            }
+            finally{
+            writer.close();
+
             }
         }
         //this is the binding
